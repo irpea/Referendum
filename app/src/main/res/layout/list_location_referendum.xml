@@ -5,10 +5,17 @@
     android:padding="8dp">
 
     <TextView
+        android:id="@+id/location_county_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="@string/county_name_string"/>
+
+    <TextView
         android:id="@+id/location_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
+        android:textSize="16sp"
         android:text="@string/location_string"/>
 
 

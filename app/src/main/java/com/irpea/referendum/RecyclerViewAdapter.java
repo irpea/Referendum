@@ -39,17 +39,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class LocationHolder extends RecyclerView.ViewHolder{
         private TextView mCaptionTextTitle;
+        private TextView mCountyNameTextTitle;
         private ReferendumItem mReferendumItem;
 
         public LocationHolder(@NonNull View itemView) {
             super(itemView);
 
             mCaptionTextTitle = itemView.findViewById(R.id.location_title);
+            mCountyNameTextTitle = itemView.findViewById(R.id.location_county_title);
         }
 
         public void bind(ReferendumItem referendumItem){
             mReferendumItem = referendumItem;
             mCaptionTextTitle.setText(mReferendumItem.getCaption());
+            mCountyNameTextTitle.setText(mReferendumItem.getCountyName());
         }
     }
 }

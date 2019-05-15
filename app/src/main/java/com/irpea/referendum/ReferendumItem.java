@@ -3,6 +3,7 @@ package com.irpea.referendum;
 import java.util.UUID;
 
 public class ReferendumItem {
+    private String mCountyName;
     private String mCaption;
     private UUID mId;
     private int mCounty;
@@ -11,6 +12,14 @@ public class ReferendumItem {
 
     public ReferendumItem(){
         mId = UUID.randomUUID();
+    }
+
+    public String getCountyName() {
+        return mCountyName;
+    }
+
+    public void setCountyName(String countyName) {
+        mCountyName = countyName;
     }
 
     public String getCaption() {
