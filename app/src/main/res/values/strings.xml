@@ -5,4 +5,7 @@
     <string name="title_info">Info</string>
     <string name="location_string">Location</string>
     <string name="location_distance_string">Distance</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="string_locate">locate</string>
+    <string name="string_menu">menu</string>
 </resources>

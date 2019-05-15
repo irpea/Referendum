@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
             Fragment mFragment = null;
             switch (item.getItemId()) {
                 case R.id.navigation_map:
-                    mFragment = new MapsFragment();
+                    mFragment = new MapFragment();
                     break;
                 case R.id.navigation_list:
                     mFragment = new LocationListFragment();
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loadFragment(new MapsFragment());
+        loadFragment(new MapFragment());
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
