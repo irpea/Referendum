@@ -57,12 +57,23 @@ public class MapFragment extends SupportMapFragment {
     private GoogleApiClient mClient;
     private GoogleMap mMap;
     private Location mCurrentLocation;
+    private double lat = 44.815399;
+    private double lon = 15.966568;
+    private int zoom = 6;
 
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setHasOptionsMenu(true);
+        if (getArguments() != null) {
+            lat = getArguments().getDouble("LAT", 44.815399);
+            lon = getArguments().getDouble("LON", 15.966568);
+            zoom = getArguments().getInt("ZOOM", 6);
+        }
+
+
+
 
         getActivity().setFinishOnTouchOutside(true);
 
@@ -93,10 +104,7 @@ public class MapFragment extends SupportMapFragment {
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 mMap = googleMap;
-
-                LatLng start = new LatLng(44.815399, 15.966568);
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(start, 6));
-
+                setMap(lat, lon, zoom);
                 updateUI();
 
             }
@@ -117,6 +125,12 @@ public class MapFragment extends SupportMapFragment {
         }else{
             Log.e("TAG","Gps already enabled");
         }
+    }
+
+    public void setMap(double lat, double lon, int zoom){
+        LatLng start = new LatLng(lat,  lon);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(start, zoom));
+
     }
 
 

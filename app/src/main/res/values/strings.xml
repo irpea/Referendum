@@ -9,4 +9,10 @@
     <string name="string_locate">Moja Lokacija</string>
     <string name="string_menu">menu</string>
     <string name="county_name_string">Zupanija</string>
+    <string name="county_title_string">County</string>
+    <string name="county_default_string">I.</string>
+    <string name="about_me_string">O meni</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
