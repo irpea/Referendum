@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -45,8 +46,6 @@ import java.util.List;
 public class MapFragment extends SupportMapFragment {
     private static final int BROJ_LOKACIJA = 89;
     private static final String TAG = "MapFragment";
-    private static final String KEY_LATITUDE = "latutude";
-    private static final String KEY_LONGITUDE = "longitude";
     final static int REQUEST_LOCATION = 199;
 
     private static final String[] LOCATION_PERMISSIONS = new String[]{
@@ -64,12 +63,6 @@ public class MapFragment extends SupportMapFragment {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setHasOptionsMenu(true);
-
-        if(bundle != null){
-            mCurrentLocation = new Location("gps");
-            mCurrentLocation.setLatitude(bundle.getDouble(KEY_LATITUDE, 0));
-            mCurrentLocation.setLongitude(bundle.getDouble(KEY_LONGITUDE, 0));
-        }
 
         getActivity().setFinishOnTouchOutside(true);
 
@@ -101,7 +94,7 @@ public class MapFragment extends SupportMapFragment {
             public void onMapReady(GoogleMap googleMap) {
                 mMap = googleMap;
 
-                LatLng start = new LatLng(45.815399, 15.966568);
+                LatLng start = new LatLng(44.815399, 15.966568);
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(start, 6));
 
                 updateUI();
@@ -126,14 +119,6 @@ public class MapFragment extends SupportMapFragment {
         }
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle bundle) {
-        super.onSaveInstanceState(bundle);
-        Log.i(TAG, "onSaveInstanceState");
-        bundle.putDouble(KEY_LATITUDE, mCurrentLocation.getLatitude());
-        bundle.putDouble(KEY_LONGITUDE, mCurrentLocation.getLongitude());
-    }
-
 
     @Override
     public void onStart() {
@@ -155,15 +140,13 @@ public class MapFragment extends SupportMapFragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.activity_fragment, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_locate);
+        final MenuItem searchItem = menu.findItem(R.id.action_locate);
         searchItem.setEnabled(mClient.isConnected());
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.action_menu:
-                return true;
             case R.id.action_locate:
                 if(hasLocationPermission()) {
                     locate();

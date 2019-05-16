@@ -6,7 +6,7 @@
     <string name="location_string">Location</string>
     <string name="location_distance_string">Distance</string>
     <string name="title_activity_maps">Map</string>
-    <string name="string_locate">locate</string>
+    <string name="string_locate">Moja Lokacija</string>
     <string name="string_menu">menu</string>
     <string name="county_name_string">Zupanija</string>
 </resources>

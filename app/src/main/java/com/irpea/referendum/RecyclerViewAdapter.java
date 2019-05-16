@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public LocationHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_location_referendum,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_location_referendum_child,parent,false);
         return new LocationHolder(view);
     }
 
@@ -37,13 +38,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mReferendumItemsList.size();
     }
 
-    public class LocationHolder extends RecyclerView.ViewHolder{
+    public class LocationHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView mCaptionTextTitle;
         private TextView mCountyNameTextTitle;
         private ReferendumItem mReferendumItem;
 
         public LocationHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
 
             mCaptionTextTitle = itemView.findViewById(R.id.location_title);
             mCountyNameTextTitle = itemView.findViewById(R.id.location_county_title);
@@ -53,6 +55,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mReferendumItem = referendumItem;
             mCaptionTextTitle.setText(mReferendumItem.getCaption());
             mCountyNameTextTitle.setText(mReferendumItem.getCountyName());
+        }
+
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(mContext, mReferendumItem.getCaption(), Toast.LENGTH_SHORT).show();
         }
     }
 }

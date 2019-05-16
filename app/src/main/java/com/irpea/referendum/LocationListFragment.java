@@ -11,9 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.json.JSONArray;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,15 +30,14 @@ public class LocationListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = view.findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         updateUI();
     }
 
     private void updateUI(){
-        ReferendumLab refLab= ReferendumLab.get(getActivity());
+        ReferendumLab refLab = ReferendumLab.get(getActivity());
         List<ReferendumItem> locations = refLab.getReferendumLocationList();
-
-        mAdapter = new RecyclerViewAdapter(locations, getContext());
+        mAdapter = new RecyclerViewAdapter(locations, getActivity());
         mRecyclerView.setAdapter(mAdapter);
     }
-
 }
