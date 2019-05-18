@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class ReferendumLab {
     private static ReferendumLab sReferendumLab;
-    private static final int NUMBER_OF_LOCATIONS = 89;
+    private static final int NUMBER_OF_LOCATIONS = 90;
     private List<ReferendumItem> mReferendumLocationList;
     ReferendumItem[] referendumLocation = new ReferendumItem[NUMBER_OF_LOCATIONS];
 
@@ -133,6 +133,7 @@ public class ReferendumLab {
         referendumLocation[86] = createLocation("GRAD ZAGREB","Tržnica Utrine ", 21,45.776412, 15.995906);
         referendumLocation[87] = createLocation("GRAD ZAGREB","Trg Volovčica", 21,45.810038, 16.016648);
         referendumLocation[88] = createLocation("GRAD ZAGREB","Tržnica Sesvete, ispred ulaza", 21,45.827158, 16.111667);
+        referendumLocation[89] = createLocation("GRAD ZAGREB","Glavni kolodvor, ulazu u Importanne Centar", 21,45.803691, 15.977584);
 
 
         Collections.addAll(mReferendumLocationList, referendumLocation);

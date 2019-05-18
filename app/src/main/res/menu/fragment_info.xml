@@ -4,7 +4,6 @@
     <item
         android:id="@+id/about_item"
         android:title="@string/about_me_string"
-        android:icon="@drawable/ic_insert_emoticon_white_24dp"
         app:showAsAction="withText" />
 
 </menu>

@@ -1,8 +1,5 @@
 package com.irpea.referendum;
 
-import android.os.Parcelable;
-
-import java.util.List;
 import java.util.UUID;
 
 public class ReferendumItem {

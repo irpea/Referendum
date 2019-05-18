@@ -1,14 +1,11 @@
 package com.irpea.referendum;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,15 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import java.util.List;
 
 
 public class LocationListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter mAdapter;
-    private LatLng ListLocationLatLng;
 
     @Nullable
     @Override
@@ -43,9 +37,9 @@ public class LocationListFragment extends Fragment {
     }
 
     private void updateUI(){
-        ReferendumLab refLab = ReferendumLab.get(getActivity());
+        ReferendumLab refLab = ReferendumLab.get(getContext());
         List<ReferendumItem> locations = refLab.getReferendumLocationList();
-        mAdapter = new RecyclerViewAdapter(locations, getActivity(), communication);
+        mAdapter = new RecyclerViewAdapter(locations, getContext(), communication);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -83,8 +77,7 @@ public class LocationListFragment extends Fragment {
         @Override
         public LocationHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_location_referendum,parent,false);
-            LocationHolder holder = new LocationHolder(view, mCommunication);
-            return holder;
+            return new LocationHolder(view, mCommunication);
         }
 
         @Override
